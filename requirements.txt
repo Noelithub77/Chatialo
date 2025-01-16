@@ -1,0 +1,6 @@
+streamlit>=1.29.0
+langchain>=0.1.0
+langchain_google_genai>=0.0.5
+chromadb>=0.4.18
+google-generativeai>=0.3.2
+python-dotenv>=1.0.0
