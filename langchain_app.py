@@ -61,36 +61,36 @@ prompt = PromptTemplate(
 )
 
 
-retrieval_chain = ConversationalRetrievalChain.from_llm(
-    llm=llm,
-    # retriever=vdb_obj.get_retriever(),
-    memory=chatHistory,
-    get_chat_history=lambda h: str(h),
-    combine_docs_chain_kwargs={"prompt": prompt, "document_variable_name": "context"},
-    return_source_documents=True,
-    verbose=True
-)
+# retrieval_chain = ConversationalRetrievalChain.from_llm(
+#     llm=llm,
+#     # retriever=vdb_obj.get_retriever(),
+#     memory=chatHistory,
+#     get_chat_history=lambda h: str(h),
+#     combine_docs_chain_kwargs={"prompt": prompt, "document_variable_name": "context"},
+#     return_source_documents=True,
+#     verbose=True
+# )
 
 
 
 def get_retrieval_response(query):
     """Tool function to get response from retrieval chain"""
-    response = retrieval_chain({"question": query})
+    # response = retrieval_chain({"question": query})   
     return f"Knowledge Base Response: {response['answer']}\nSources: {[doc.metadata.get('source', 'Unknown') for doc in response['source_documents']]}"
 
 # Updated tools list with retrieval tool
 # Don't Explain tools in detail
 tools = [
-    Tool(
-        name="Knowledge Base Search",
-        func=get_retrieval_response,
-        description="Use this tool to search the knowledge base for specific information about IIIT Kottayam"
-    ),
     # Tool(
-    #     name="Load Mess Menu",
-    #     func=lambda x: f"Mess menu context: {load_context_file('mess_menu.txt')}",
-    #     description="Load mess menu context for food-related queries",
+    #     name="Knowledge Base Search",
+    #     func=get_retrieval_response,
+    #     description="Use this tool to search the knowledge base for specific information about IIIT Kottayam"
     # ),
+    Tool(
+        name="Load Mess Menu",
+        func=lambda x: f"Mess menu context: {load_context_file('mess_menu.txt')}",
+        description="Load mess menu context for food-related queries",
+    ),
     Tool(
         name="Load Academic Calendar",
         func=lambda x: f"Academic calendar context: {load_context_file('inst_calender.txt')}",
