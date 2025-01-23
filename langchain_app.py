@@ -14,7 +14,7 @@ def set_api_key(key):
     """Set the Google API key"""
     os.environ["GOOGLE_API_KEY"] = key
 
-os.environ["GOOGLE_API_KEY"] = "AIzaSyAYew4okjx4jmR7xbKhLj2mAckgtUUbR-k"
+os.environ["GOOGLE_API_KEY"] = "AIzaSyAUwMc3lBZdf73j1TSvRJHkD_nDKfzesKc"
 
 
 # Initialize logging
@@ -86,11 +86,11 @@ tools = [
         func=get_retrieval_response,
         description="Use this tool to search the knowledge base for specific information about IIIT Kottayam"
     ),
-    Tool(
-        name="Load Mess Menu",
-        func=lambda x: f"Mess menu context: {load_context_file('mess_menu.txt')}",
-        description="Load mess menu context for food-related queries",
-    ),
+    # Tool(
+    #     name="Load Mess Menu",
+    #     func=lambda x: f"Mess menu context: {load_context_file('mess_menu.txt')}",
+    #     description="Load mess menu context for food-related queries",
+    # ),
     Tool(
         name="Load Academic Calendar",
         func=lambda x: f"Academic calendar context: {load_context_file('inst_calender.txt')}",
