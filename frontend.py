@@ -1,12 +1,20 @@
 import streamlit as st
-from langchain_app import initialize_bot,set_api_key
+from langchain_app import initialize_bot, set_api_key
+from streamlit_local_storage import LocalStorage
 import logging
 
+localS = LocalStorage()
 
-    
 # Initialize session state
 if 'api_key_entered' not in st.session_state:
     st.session_state.api_key_entered = False
+
+# Load API key from local storage if available
+stored_api_key = localS.getItem("google_api_key")
+if stored_api_key:
+    set_api_key(stored_api_key)
+    st.session_state.api_key_entered = True
+    st.session_state.GOOGLE_API_KEY = stored_api_key
 
 st.title("Mr.G (IIITK AI Assistant)")
 
@@ -19,6 +27,7 @@ if not st.session_state.api_key_entered:
             set_api_key(api_key)
             st.session_state.api_key_entered = True
             st.session_state.GOOGLE_API_KEY = api_key
+            localS.setItem("google_api_key", api_key)  # Store API key in local storage
             st.rerun()
         else:
             st.error("Please enter an API key")

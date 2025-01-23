@@ -6,3 +6,4 @@ google-generativeai>=0.3.2
 python-dotenv>=1.0.0
 langchain_chroma
 langchain_community
+streamlit-local-storage
