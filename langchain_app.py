@@ -14,7 +14,7 @@ def set_api_key(key):
     """Set the Google API key"""
     os.environ["GOOGLE_API_KEY"] = key
 
-os.environ["GOOGLE_API_KEY"] = "AIzaSyAUwMc3lBZdf73j1TSvRJHkD_nDKfzesKc"
+# os.environ["GOOGLE_API_KEY"] = "AIzaSyAUwMc3lBZdf73j1TSvRJHkD_nDKfzesKc"
 
 
 # Initialize logging
