@@ -7,7 +7,7 @@ from langchain.agents import initialize_agent, AgentType
 import os
 import logging
 from datetime import datetime
-from vdb_management import vdb
+# from vdb_management import vdb
 
 
 # def set_api_key(key):
@@ -32,7 +32,7 @@ llm = ChatGoogleGenerativeAI(
 )
 
 
-vdb_obj = vdb(persist_directory="db")
+# vdb_obj = vdb(persist_directory="db")
 
 
 # Don't explain this
@@ -63,7 +63,7 @@ prompt = PromptTemplate(
 
 retrieval_chain = ConversationalRetrievalChain.from_llm(
     llm=llm,
-    retriever=vdb_obj.get_retriever(),
+    # retriever=vdb_obj.get_retriever(),
     memory=chatHistory,
     get_chat_history=lambda h: str(h),
     combine_docs_chain_kwargs={"prompt": prompt, "document_variable_name": "context"},
