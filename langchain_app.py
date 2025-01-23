@@ -10,9 +10,9 @@ from datetime import datetime
 from vdb_management import vdb
 
 
-def set_api_key(key):
-    """Set the Google API key"""
-    os.environ["GOOGLE_API_KEY"] = key
+# def set_api_key(key):
+#     """Set the Google API key"""
+#     os.environ["GOOGLE_API_KEY"] = key
 
 os.environ["GOOGLE_API_KEY"] = "AIzaSyAUwMc3lBZdf73j1TSvRJHkD_nDKfzesKc"
 
